@@ -12,10 +12,12 @@ import {
 } from "@nextui-org/react";
 
 import { useForm, Controller } from "react-hook-form";
-import MyContext from "./MyContext";
-
+import { useState } from "react";
 export default function FormIFS({ onFormSubmit }) {
-  const { handleSubmit, control, reset } = useForm({
+  const [selectedKeysSelec1, setSelectedKeys1] = useState([]);
+  const [selectedKeysSelec2, setSelectedKeys2] = useState([]);
+  const [selectedKeysSelec3, setSelectedKeys3] = useState([]);
+  const { handleSubmit, control, reset, register } = useForm({
     defaultValues: {
       Rescue: "",
       SWLR: "",
@@ -24,7 +26,6 @@ export default function FormIFS({ onFormSubmit }) {
       TSS: "",
       T: "",
       S: "",
-      Windows: "",
     },
   });
 
@@ -49,27 +50,21 @@ export default function FormIFS({ onFormSubmit }) {
                 />
               )}
             />
-
-            <Controller
-              control={control}
-              name="SWLR"
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="SWLR"
-                  placeholder="Selecciona una opción"
-                  isRequired
-                >
-                  <SelectItem key="YES" value="YES">
-                    Si
-                  </SelectItem>
-                  <SelectItem key="NO" value="NO">
-                    No
-                  </SelectItem>
-                </Select>
-              )}
-            />
-
+            <Select
+              {...register("SWLR")}
+              label="SWLR"
+              placeholder="Selecciona una opción"
+              isRequired
+              selectedKeys={selectedKeysSelec1}
+              onSelectionChange={(keys) => setSelectedKeys1(keys)}
+            >
+              <SelectItem key="YES" value="YES">
+                Si
+              </SelectItem>
+              <SelectItem key="NO" value="NO">
+                No
+              </SelectItem>
+            </Select>
             <Controller
               control={control}
               name="PF"
@@ -83,25 +78,21 @@ export default function FormIFS({ onFormSubmit }) {
                 />
               )}
             />
-            <Controller
-              control={control}
-              name="IR"
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="IR"
-                  placeholder="Selecciona una opción"
-                  isRequired
-                >
-                  <SelectItem key="YES" value="YES">
-                    Si
-                  </SelectItem>
-                  <SelectItem key="NO" value="NO">
-                    No
-                  </SelectItem>
-                </Select>
-              )}
-            />
+            <Select
+              {...register("IR")}
+              label="IR"
+              placeholder="Selecciona una opción"
+              isRequired
+              selectedKeys={selectedKeysSelec2}
+              onSelectionChange={(keys) => setSelectedKeys2(keys)}
+            >
+              <SelectItem key="YES" value="YES">
+                Si
+              </SelectItem>
+              <SelectItem key="NO" value="NO">
+                No
+              </SelectItem>
+            </Select>
             <Controller
               control={control}
               name="TSS"
@@ -144,25 +135,20 @@ export default function FormIFS({ onFormSubmit }) {
                 />
               )}
             />
-            <Controller
-              control={control}
-              name="Windows"
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="¿Windows es compatible?"
-                  placeholder="Selecciona una opción"
-                  isRequired
-                >
-                  <SelectItem key="YES" value="YES">
-                    Si
-                  </SelectItem>
-                  <SelectItem key="NO" value="NO">
-                    No
-                  </SelectItem>
-                </Select>
-              )}
-            />
+            <Select
+              {...register("Windows")}
+              label="¿Windows es compatible?"
+              placeholder="Selecciona una opción"
+              selectedKeys={selectedKeysSelec3}
+              onSelectionChange={(keys) => setSelectedKeys3(keys)}
+            >
+              <SelectItem key="YES" value="YES">
+                Si
+              </SelectItem>
+              <SelectItem key="NO" value="NO">
+                No
+              </SelectItem>
+            </Select>
           </div>
           <section className="w-full flex flex-col mt-10 gap-2">
             <Button
@@ -174,7 +160,12 @@ export default function FormIFS({ onFormSubmit }) {
             </Button>
             <Button
               size="lg"
-              onClick={reset}
+              onClick={() => {
+                reset();
+                setSelectedKeys1([]);
+                setSelectedKeys2([]);
+                setSelectedKeys3([]);
+              }}
               className="bg-accent text-white font-semibold"
             >
               Limpiar campos
