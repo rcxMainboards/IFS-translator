@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Card, CardHeader, CardBody, Divider, Code } from "@nextui-org/react";
 import axios from "axios";
-export default function TranslatedOuput({ formData }) {
+import { BsCopy } from "react-icons/bs";
+
+export default function TranslatedOuput({ formData, handleResetForm }) {
   const [translatedText, setTranslatedText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -28,6 +30,11 @@ export default function TranslatedOuput({ formData }) {
     setTranslatedText(formatedText);
   };
 
+  const copyToClipboard = (e) => {
+    navigator.clipboard.writeText(translatedText);
+    handleResetForm();
+  };
+
   useEffect(() => {
     if (formData) {
       setIsLoading(true);
@@ -52,8 +59,13 @@ export default function TranslatedOuput({ formData }) {
         <Divider />
       </CardHeader>
       <CardBody>
-        <Code className="p-10 text-wrap" size="md">
+        <Code className="p-10 text-wrap flex" size="md">
           {!isLoading ? translatedText : "Cargando..."}
+          <BsCopy
+            className="cursor-pointer"
+            onClick={copyToClipboard}
+            size={35}
+          />
         </Code>
       </CardBody>
     </Card>

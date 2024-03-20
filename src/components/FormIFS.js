@@ -10,25 +10,20 @@ import {
   Divider,
   Button,
 } from "@nextui-org/react";
-
-import { useForm, Controller } from "react-hook-form";
-import { useState } from "react";
-export default function FormIFS({ onFormSubmit }) {
-  const [selectedKeysSelec1, setSelectedKeys1] = useState([]);
-  const [selectedKeysSelec2, setSelectedKeys2] = useState([]);
-  const [selectedKeysSelec3, setSelectedKeys3] = useState([]);
-  const { handleSubmit, control, reset, register } = useForm({
-    defaultValues: {
-      Rescue: "",
-      SWLR: "",
-      PF: "",
-      IR: "",
-      TSS: "",
-      T: "",
-      S: "",
-    },
-  });
-
+import { Controller } from "react-hook-form";
+export default function FormIFS({
+  onFormSubmit,
+  handleSubmit,
+  control,
+  register,
+  handleResetForm,
+  selectedKeysSelec1,
+  selectedKeysSelec2,
+  selectedKeysSelec3,
+  setSelectedKeys1,
+  setSelectedKeys2,
+  setSelectedKeys3,
+}) {
   return (
     <Card className="w-full py-12 px-6 pb-10 max-w-[60rem]">
       <CardHeader className="font-bold text-3xl">
@@ -161,10 +156,7 @@ export default function FormIFS({ onFormSubmit }) {
             <Button
               size="lg"
               onClick={() => {
-                reset();
-                setSelectedKeys1([]);
-                setSelectedKeys2([]);
-                setSelectedKeys3([]);
+                handleResetForm();
               }}
               className="bg-accent text-white font-semibold"
             >
