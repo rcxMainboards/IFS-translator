@@ -26,7 +26,8 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 
   const formatOutput = (text) => {
     const textSplited = text.translatedText.split(",");
-    const formatedText = `#Rescue ${textSplited[0]} #SWLR ${formData.SWLR} #IR ${formData.IR} #PF ${textSplited[1]}  #TSS: ${textSplited[2]}  #T ${textSplited[3]}  #S ${textSplited[4]} #Windows: ${formData.Windows}`;
+    console.log(textSplited);
+    const formatedText = `#Rescue ${textSplited[0]}\n#SWLR ${formData.SWLR}\n#IR ${formData.IR}\n#PF ${textSplited[1]}\n#TSS: ${textSplited[2]}\n#T ${textSplited[3]}\n#S ${textSplited[4]}\n#Windows: ${formData.Windows}`;
     setTranslatedText(formatedText);
   };
 
@@ -38,6 +39,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
   useEffect(() => {
     if (formData) {
       setIsLoading(true);
+
       translateText(
         `${formData.Rescue},${formData.PF},${formData.TSS},${formData.T},${formData.S}`
       )
@@ -53,13 +55,16 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
     }
   }, [formData]);
   return (
-    <Card className="p-10 w-full">
+    <Card className="p-10 w-full ">
       <CardHeader className="font-semibold text-2xl flex flex-col gap-2">
         Salida para copiar en IFS
         <Divider />
       </CardHeader>
       <CardBody>
-        <Code className="p-10 text-wrap flex" size="md">
+        <Code
+          className="p-10 text-wrap flex text-sm h-[20rem] max-w-[48rem]"
+          size="sm"
+        >
           {!isLoading ? translatedText : "Cargando..."}
           <BsCopy
             className="cursor-pointer"
