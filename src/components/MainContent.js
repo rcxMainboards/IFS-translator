@@ -3,8 +3,10 @@
 import FormIFS from "./FormIFS";
 import TranslatedOuput from "./TranslatedOuput";
 import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
-
+import { useForm } from "react-hook-form";
+import clsx from "clsx";
+import { Toaster } from "sonner";
+import { motion } from "framer-motion";
 export default function MainContent() {
   const [formData, setFormData] = useState(null);
   const [selectedKeysSelec1, setSelectedKeys1] = useState([]);
@@ -25,9 +27,14 @@ export default function MainContent() {
 
   const handleResetForm = () => {
     reset();
+    setFormData(null);
     setSelectedKeys1([]);
     setSelectedKeys2([]);
     setSelectedKeys3([]);
+  };
+
+  const onCopyToClipBoard = () => {
+    handleResetForm();
   };
 
   const handleFormSubmit = (data) => {
@@ -35,7 +42,11 @@ export default function MainContent() {
   };
 
   return (
-    <div className="grid place-items-center gap-10 md:grid-cols-2 p-8">
+    <div
+      className={clsx("grid place-items-center gap-2 md:grid-cols p-5", {
+        "grid-cols-2": formData,
+      })}
+    >
       <FormIFS
         onFormSubmit={handleFormSubmit}
         handleSubmit={handleSubmit}
@@ -49,7 +60,23 @@ export default function MainContent() {
         setSelectedKeys2={setSelectedKeys2}
         setSelectedKeys3={setSelectedKeys3}
       />
-      <TranslatedOuput formData={formData} handleResetForm={handleResetForm} />
+      {formData ? (
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            type: "just",
+            stiffness: 260,
+            damping: 20,
+          }}
+        >
+          <TranslatedOuput
+            formData={formData}
+            handleResetForm={handleResetForm}
+          />
+        </motion.div>
+      ) : null}
+      <Toaster richColors />
     </div>
   );
 }

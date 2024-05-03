@@ -25,9 +25,9 @@ export default function FormIFS({
   setSelectedKeys3,
 }) {
   return (
-    <Card className="w-full py-12 px-6 pb-10 max-w-[60rem]">
+    <Card className="w-full py-6 px-6 pb-4 max-w-[40rem]">
       <CardHeader className="font-bold text-3xl">
-        Formulario IFS: Comentario de Reparación
+        Formulario IFS: Comentarios de Reparación
       </CardHeader>
       <Divider />
       <CardBody>
@@ -41,6 +41,7 @@ export default function FormIFS({
                   {...field}
                   type="text"
                   label="Rescue"
+                  variant="bordered"
                   placeholder="Escriba una descripción"
                 />
               )}
@@ -50,6 +51,7 @@ export default function FormIFS({
               label="SWLR"
               placeholder="Selecciona una opción"
               isRequired
+              variant="bordered"
               selectedKeys={selectedKeysSelec1}
               onSelectionChange={(keys) => setSelectedKeys1(keys)}
             >
@@ -68,6 +70,7 @@ export default function FormIFS({
                   {...field}
                   type="text"
                   label="PF"
+                  variant="bordered"
                   isRequired
                   placeholder="Escriba una descripción"
                 />
@@ -77,6 +80,7 @@ export default function FormIFS({
               {...register("IR")}
               label="IR"
               placeholder="Selecciona una opción"
+              variant="bordered"
               isRequired
               selectedKeys={selectedKeysSelec2}
               onSelectionChange={(keys) => setSelectedKeys2(keys)}
@@ -96,6 +100,7 @@ export default function FormIFS({
                   {...field}
                   type="text"
                   label="TSS"
+                  variant="bordered"
                   isRequired
                   maxRows={3}
                   placeholder="Escriba una descripción"
@@ -108,6 +113,7 @@ export default function FormIFS({
               render={({ field }) => (
                 <Textarea
                   {...field}
+                  variant="bordered"
                   type="text"
                   label="T"
                   isRequired
@@ -122,6 +128,7 @@ export default function FormIFS({
               render={({ field }) => (
                 <Textarea
                   {...field}
+                  variant="bordered"
                   type="text"
                   label="S"
                   isRequired
@@ -132,20 +139,18 @@ export default function FormIFS({
             />
             <Select
               {...register("Windows")}
-              label="¿Windows es compatible?"
-              placeholder="Selecciona una opción"
+              label="¿Windows no es compatible?"
+              placeholder="No"
+              variant="bordered"
               selectedKeys={selectedKeysSelec3}
               onSelectionChange={(keys) => setSelectedKeys3(keys)}
             >
               <SelectItem key="YES" value="YES">
                 Si
               </SelectItem>
-              <SelectItem key="NO" value="NO">
-                No
-              </SelectItem>
             </Select>
           </div>
-          <section className="w-full flex flex-col mt-10 gap-2">
+          <section className="w-full flex flex-col mt-5 gap-2">
             <Button
               type="submit"
               size="lg"
@@ -155,10 +160,11 @@ export default function FormIFS({
             </Button>
             <Button
               size="lg"
+              color="secondary"
               onClick={() => {
                 handleResetForm();
               }}
-              className="bg-accent text-white font-semibold"
+              className=" text-white font-semibold"
             >
               Limpiar campos
             </Button>
