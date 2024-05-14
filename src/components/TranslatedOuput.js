@@ -43,6 +43,12 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 
     const onCopyToClipBoard = () => {
         handleResetForm();
+        const textarea = document.createElement('textarea');
+        textarea.textContent = translatedText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy'); // for the sake of no using https, change please
+        document.body.removeChild(textarea);
         toast.success('Se ha copiado el texto');
     };
 
@@ -69,7 +75,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
                 <Divider />
             </CardHeader>
             <CardBody>
-                <Snippet symbol={false} onCopy={onCopyToClipBoard} className="flex text-sm" codeString={translatedText} size="lg">
+                <Snippet symbol={false} onCopy={onCopyToClipBoard} className="flex text-sm" size="lg">
                     {!isLoading ? <p className="font-bold text-wrap">{translatedText}</p> : 'Cargando...'}
                 </Snippet>
             </CardBody>
