@@ -16,8 +16,13 @@ export default function FormIFS({
     setSelectedKeys3,
 }) {
     return (
-        <Card className="p-6 max-w-[42rem]">
+        <Card className=" p-6 max-w-[42rem]">
             <CardHeader className="font-bold text-3xl">Formulario IFS: Comentarios de Reparación</CardHeader>
+            <CardHeader className="text-sm">
+                <p>
+                    <span className="font-semibold">Nota:</span> los campos con asteriscos son <span className="underline">campos obligatorios</span>
+                </p>
+            </CardHeader>
             <Divider />
             <CardBody>
                 <form onSubmit={handleSubmit((data) => onFormSubmit(data))}>

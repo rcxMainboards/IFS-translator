@@ -43,19 +43,21 @@ export default function MainContent() {
                 'grid-cols-2': formData,
             })}
         >
-            <FormIFS
-                onFormSubmit={handleFormSubmit}
-                handleSubmit={handleSubmit}
-                control={control}
-                register={register}
-                handleResetForm={handleResetForm}
-                selectedKeysSelec1={selectedKeysSelec1}
-                selectedKeysSelec2={selectedKeysSelec2}
-                selectedKeysSelec3={selectedKeysSelec3}
-                setSelectedKeys1={setSelectedKeys1}
-                setSelectedKeys2={setSelectedKeys2}
-                setSelectedKeys3={setSelectedKeys3}
-            />
+            <div>
+                <FormIFS
+                    onFormSubmit={handleFormSubmit}
+                    handleSubmit={handleSubmit}
+                    control={control}
+                    register={register}
+                    handleResetForm={handleResetForm}
+                    selectedKeysSelec1={selectedKeysSelec1}
+                    selectedKeysSelec2={selectedKeysSelec2}
+                    selectedKeysSelec3={selectedKeysSelec3}
+                    setSelectedKeys1={setSelectedKeys1}
+                    setSelectedKeys2={setSelectedKeys2}
+                    setSelectedKeys3={setSelectedKeys3}
+                />
+            </div>
             {formData ? (
                 <motion.div
                     className="w-full max-w-[48rem] m-auto"

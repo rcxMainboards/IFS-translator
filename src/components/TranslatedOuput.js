@@ -68,6 +68,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
                 });
         }
     }, [formData]);
+
     return (
         <Card className="p-10 w-full">
             <CardHeader className="font-semibold text-3xl flex flex-col gap-2">
