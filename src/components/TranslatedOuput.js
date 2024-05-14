@@ -10,7 +10,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
     const translateText = async (form_text) => {
         console.log(form_text);
         const res = await axios.post(
-            'http://localhost:5000/translate',
+            'http://10.124.0.123:5000/translate',
             {
                 q: form_text,
                 source: 'es',
