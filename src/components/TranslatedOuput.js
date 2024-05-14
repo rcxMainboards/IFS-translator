@@ -36,7 +36,9 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 
         const { Rescue, SWLR, PF, IR, T, S, TSS, Windows } = translate_obj;
 
-        const text = `${Rescue ? '#Rescue ' + Rescue : ''} #SWLR ${SWLR} #IR ${IR} #PF ${PF}  #TSS ${TSS} #T ${T} #S ${S} ${Windows ? '#Windows ' + Windows : ''}`;
+        const text = `${Rescue ? '#Rescue ' + Rescue : ''} ${SWLR ? '#SWLR' : ''} #PF ${PF} #IR ${IR}  #TSS ${TSS} ${
+            Windows ? 'W11REQUEST; WE DO NOT HAVE THE TOOL TO UPDATE THIS UNIT TO W11. SORRY FOR THE INCONVENIENCE, WE HAD TU PUT W10 ON IT ' : ' '
+        } #T ${T} #S ${S}`;
 
         setTranslatedText(text);
     };
@@ -64,13 +66,13 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
     }, [formData]);
     return (
         <Card className="p-10 w-full">
-            <CardHeader className="font-semibold text-2xl flex flex-col gap-2">
+            <CardHeader className="font-semibold text-3xl flex flex-col gap-2">
                 Salida para copiar en IFS
                 <Divider />
             </CardHeader>
             <CardBody>
                 <Snippet symbol={false} onCopy={onCopyToClipBoard} className="flex text-sm " size="lg">
-                    {!isLoading ? <p className="font-bold text-wrap max-w-[30rem]">{translatedText}</p> : 'Cargando...'}
+                    {!isLoading ? <p className="font-bold text-wrap">{translatedText}</p> : 'Cargando...'}
                 </Snippet>
             </CardBody>
         </Card>

@@ -1,9 +1,9 @@
-version: "3.9"
+version: '3.9'
 
 services:
-  nextapp:
-    container_name: nextapp
-    image: nextapp
-    build: .
-    ports:
-      - "5001:5001"
+    nextapp:
+        container_name: ifs_nextApp
+        image: nextapp
+        build: .
+        ports:
+            - '5001:5001'
