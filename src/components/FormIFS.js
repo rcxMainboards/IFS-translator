@@ -16,7 +16,7 @@ export default function FormIFS({
     setSelectedKeys3,
 }) {
     return (
-        <Card className=" p-6 max-w-[42rem]">
+        <Card className=" p-6 max-w-[44rem]">
             <CardHeader className="font-bold text-3xl">Formulario IFS: Comentarios de Reparación</CardHeader>
             <CardHeader className="text-sm">
                 <p>
@@ -26,12 +26,20 @@ export default function FormIFS({
             <Divider />
             <CardBody>
                 <form onSubmit={handleSubmit((data) => onFormSubmit(data))}>
-                    <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                         <Controller
                             control={control}
                             name="Rescue"
                             render={({ field }) => (
-                                <Input {...field} type="text" label="Rescue" description={descriptions.Rescue} variant="bordered" placeholder="Escriba una descripción" />
+                                <Textarea
+                                    {...field}
+                                    type="text"
+                                    label="Rescue"
+                                    maxRows={2}
+                                    description={descriptions.Rescue}
+                                    variant="bordered"
+                                    placeholder="Escriba una descripción"
+                                />
                             )}
                         />
                         <Select
