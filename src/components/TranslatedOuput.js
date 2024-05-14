@@ -32,8 +32,6 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
             return acc;
         }, {});
 
-        console.log(translate_obj);
-
         const { Rescue, SWLR, PF, IR, T, S, TSS, Windows } = translate_obj;
 
         const text = `${Rescue ? '#Rescue ' + Rescue : ''} ${SWLR ? '#SWLR' : ''} #PF ${PF} #IR ${IR}  #TSS ${TSS} ${
@@ -71,7 +69,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
                 <Divider />
             </CardHeader>
             <CardBody>
-                <Snippet symbol={false} onCopy={onCopyToClipBoard} className="flex text-sm " size="lg">
+                <Snippet symbol={false} onCopy={onCopyToClipBoard} className="flex text-sm" codeString={translatedText} size="lg">
                     {!isLoading ? <p className="font-bold text-wrap">{translatedText}</p> : 'Cargando...'}
                 </Snippet>
             </CardBody>
