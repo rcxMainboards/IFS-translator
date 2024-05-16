@@ -16,7 +16,7 @@ export default function FormIFS({
     setSelectedKeys3,
 }) {
     return (
-        <Card className=" p-6 max-w-[44rem]">
+        <Card className="max-w-[44rem] p-6">
             <CardHeader className="font-bold text-3xl">Formulario IFS: Comentarios de Reparación</CardHeader>
             <CardHeader className="text-sm">
                 <p>

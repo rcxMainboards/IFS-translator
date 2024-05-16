@@ -38,26 +38,20 @@ export default function MainContent() {
     };
 
     return (
-        <div
-            className={clsx('flex h-full items-center lg:pl-10 flex-col gap-10 lg:flex lg:flex-row p-5 pb-20', {
-                'grid-cols-2': formData,
-            })}
-        >
-            <div>
-                <FormIFS
-                    onFormSubmit={handleFormSubmit}
-                    handleSubmit={handleSubmit}
-                    control={control}
-                    register={register}
-                    handleResetForm={handleResetForm}
-                    selectedKeysSelec1={selectedKeysSelec1}
-                    selectedKeysSelec2={selectedKeysSelec2}
-                    selectedKeysSelec3={selectedKeysSelec3}
-                    setSelectedKeys1={setSelectedKeys1}
-                    setSelectedKeys2={setSelectedKeys2}
-                    setSelectedKeys3={setSelectedKeys3}
-                />
-            </div>
+        <div className={clsx('bg-slate-500 flex-1 flex flex-col items-center p-4 gap-5 lg:flex-row lg:items-stretch')}>
+            <FormIFS
+                onFormSubmit={handleFormSubmit}
+                handleSubmit={handleSubmit}
+                control={control}
+                register={register}
+                handleResetForm={handleResetForm}
+                selectedKeysSelec1={selectedKeysSelec1}
+                selectedKeysSelec2={selectedKeysSelec2}
+                selectedKeysSelec3={selectedKeysSelec3}
+                setSelectedKeys1={setSelectedKeys1}
+                setSelectedKeys2={setSelectedKeys2}
+                setSelectedKeys3={setSelectedKeys3}
+            />
             {formData ? (
                 <motion.div
                     className="w-full max-w-[48rem] m-auto"

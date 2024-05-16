@@ -10,7 +10,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
     const translateText = async (form_text) => {
         console.log(form_text);
         const res = await axios.post(
-            'http://10.124.0.123:5000/translate',
+            'http://localhost:5000/translate',
             {
                 q: form_text,
                 source: 'es',
@@ -34,7 +34,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 
         const { Rescue, SWLR, PF, IR, T, S, TSS, Windows } = translate_obj;
 
-        const text = `${Rescue ? '#Rescue ' + Rescue : ''} ${SWLR ? '#SWLR' : ''} #PF ${PF} #IR ${IR}  #TSS ${TSS} ${
+        const text = `${Rescue ? '#Rescue ' + Rescue : ''} ${SWLR == 'YES' ? '#SWLR' : ''} #PF ${PF} #IR ${IR}  #TSS ${TSS} ${
             Windows ? 'W11REQUEST; WE DO NOT HAVE THE TOOL TO UPDATE THIS UNIT TO W11. SORRY FOR THE INCONVENIENCE, WE HAD TU PUT W10 ON IT ' : ' '
         } #T ${T} #S ${S}`;
 
@@ -70,7 +70,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
     }, [formData]);
 
     return (
-        <Card className="p-10 w-full">
+        <Card className="p-7">
             <CardHeader className="font-semibold text-3xl flex flex-col gap-2">
                 Salida para copiar en IFS
                 <Divider />
