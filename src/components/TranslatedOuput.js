@@ -75,7 +75,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
                 Salida para copiar en IFS
                 <Divider />
             </CardHeader>
-            <CardBody>
+            <CardBody className="select-none">
                 <Snippet symbol={false} onCopy={onCopyToClipBoard} className="flex text-sm" size="lg">
                     {!isLoading ? <p className="font-bold text-wrap">{translatedText}</p> : 'Cargando...'}
                 </Snippet>
