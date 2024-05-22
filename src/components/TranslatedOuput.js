@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from 'react';
 import { Card, CardHeader, CardBody, Divider, Snippet } from '@nextui-org/react';
 import axios from 'axios';
@@ -8,11 +9,11 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
     const [isLoading, setIsLoading] = useState(false);
 
     const translateText = async (form_text) => {
-        console.log(form_text);
+        const formated_text = form_text.map(t => t.toLowerCase())
         const res = await axios.post(
             'http://10.124.0.123:5000/translate',
             {
-                q: form_text,
+                q: formated_text,
                 source: 'es',
                 target: 'en',
                 format: 'text',
@@ -22,6 +23,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
                 headers: { 'Content-Type': 'application/json' },
             }
         );
+
         return res.data;
     };
 
@@ -34,9 +36,8 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 
         const { Rescue, SWLR, PF, IR, T, S, TSS, Windows } = translate_obj;
 
-        const text = `${Rescue ? '#Rescue ' + Rescue : ''} ${SWLR == 'YES' ? '#SWLR' : ''} #PF ${PF} #IR ${IR}  #TSS ${TSS} ${
-            Windows ? 'W11REQUEST; WE DO NOT HAVE THE TOOL TO UPDATE THIS UNIT TO W11. SORRY FOR THE INCONVENIENCE, WE HAD TU PUT W10 ON IT ' : ' '
-        } #T ${T} #S ${S}`;
+        const text = `${Rescue ? '#Rescue ' + Rescue : ''} ${SWLR == 'yeah' ? '#SWLR' : ''} #PF ${PF} #IR ${IR === 'yeah' ? 'yes' : 'no'}  #TSS ${TSS} ${Windows ? 'W11REQUEST; WE DO NOT HAVE THE TOOL TO UPDATE THIS UNIT TO W11. SORRY FOR THE INCONVENIENCE, WE HAD TU PUT W10 ON IT ' : ' '
+            } #T ${T} #S ${S}`;
 
         setTranslatedText(text);
     };

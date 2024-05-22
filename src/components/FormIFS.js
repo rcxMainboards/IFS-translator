@@ -52,10 +52,10 @@ export default function FormIFS({
                             selectedKeys={selectedKeysSelec1}
                             onSelectionChange={(keys) => setSelectedKeys1(keys)}
                         >
-                            <SelectItem key="YES" value="YES">
+                            <SelectItem key="Si" value="Si">
                                 Si
                             </SelectItem>
-                            <SelectItem key="NO" value="NO">
+                            <SelectItem key="No" value="No">
                                 No
                             </SelectItem>
                         </Select>
@@ -84,10 +84,10 @@ export default function FormIFS({
                             selectedKeys={selectedKeysSelec2}
                             onSelectionChange={(keys) => setSelectedKeys2(keys)}
                         >
-                            <SelectItem key="YES" value="YES">
+                            <SelectItem key="Si" value="si">
                                 Si
                             </SelectItem>
-                            <SelectItem key="NO" value="NO">
+                            <SelectItem key="No" value="No">
                                 No
                             </SelectItem>
                         </Select>
@@ -147,7 +147,7 @@ export default function FormIFS({
                             selectedKeys={selectedKeysSelec3}
                             onSelectionChange={(keys) => setSelectedKeys3(keys)}
                         >
-                            <SelectItem key="YES" value="YES">
+                            <SelectItem key="WYES" value="YES">
                                 Si
                             </SelectItem>
                         </Select>
