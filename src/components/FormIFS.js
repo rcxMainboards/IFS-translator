@@ -28,8 +28,8 @@ export default function FormIFS({
                 <form onSubmit={handleSubmit((data) => onFormSubmit(data))}>
                     <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                         <Select
-                            {...register('SWLR')}
-                            label="(1) Software Reload (SWLR)"
+                            {...register('SWRL')}
+                            label="(1) Software Reload (SWRL)"
                             placeholder="Selecciona una opción"
                             isRequired
                             variant="bordered"
