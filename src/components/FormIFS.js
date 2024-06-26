@@ -20,31 +20,16 @@ export default function FormIFS({
             <CardHeader className="font-bold text-3xl">Formulario IFS: Comentarios de Reparación</CardHeader>
             <CardHeader className="text-sm">
                 <p>
-                    <span className="font-semibold">Nota:</span> los campos con asteriscos son <span className="underline">campos obligatorios</span>
+                    <span className="font-semibold">Nota:</span> los campos con asteriscos son <span className="underline text-danger-300">campos obligatorios*</span>
                 </p>
             </CardHeader>
             <Divider />
             <CardBody>
                 <form onSubmit={handleSubmit((data) => onFormSubmit(data))}>
                     <div className="grid grid-cols-2 gap-x-6 gap-y-3">
-                        <Controller
-                            control={control}
-                            name="Rescue"
-                            render={({ field }) => (
-                                <Textarea
-                                    {...field}
-                                    type="text"
-                                    label="Rescue"
-                                    maxRows={2}
-                                    description={descriptions.Rescue}
-                                    variant="bordered"
-                                    placeholder="Escriba una descripción"
-                                />
-                            )}
-                        />
                         <Select
                             {...register('SWLR')}
-                            label="SWLR"
+                            label="(1) Software Reload (SWLR)"
                             placeholder="Selecciona una opción"
                             isRequired
                             variant="bordered"
@@ -63,20 +48,20 @@ export default function FormIFS({
                             control={control}
                             name="PF"
                             render={({ field }) => (
-                                <Input
+                                <Textarea
                                     {...field}
                                     type="text"
-                                    label="PF"
+                                    label="(2) Queja del Cliente (PF)"
                                     description={descriptions.PF}
                                     variant="bordered"
                                     isRequired
-                                    placeholder="Escriba una descripción"
+                                    placeholder="Escriba la queja del cliente"
                                 />
                             )}
                         />
                         <Select
                             {...register('IR')}
-                            label="IR"
+                            label="(3) Replica de la Queja (IR)"
                             placeholder="Selecciona una opción"
                             variant="bordered"
                             description={descriptions.IR}
@@ -98,11 +83,11 @@ export default function FormIFS({
                                 <Textarea
                                     {...field}
                                     type="text"
-                                    label="TSS"
+                                    label="(4) Pruebas Realizadas (TSS)"
                                     description={descriptions.TSS}
                                     variant="bordered"
                                     isRequired
-                                    maxRows={2}
+                                    maxRows={4}
                                     placeholder="Escriba una descripción"
                                 />
                             )}
@@ -116,9 +101,9 @@ export default function FormIFS({
                                     variant="bordered"
                                     type="text"
                                     description={descriptions.T}
-                                    label="T"
+                                    label="(5) Diagnostico (T)"
                                     isRequired
-                                    maxRows={2}
+                                    maxRows={4}
                                     placeholder="Escriba una descripción"
                                 />
                             )}
@@ -132,16 +117,31 @@ export default function FormIFS({
                                     variant="bordered"
                                     type="text"
                                     description={descriptions.S}
-                                    label="S"
+                                    label="(6) Reparación (S)"
                                     isRequired
+                                    maxRows={4}
+                                    placeholder="Escriba una descripción de la reparación"
+                                />
+                            )}
+                        />
+                        <Controller
+                            control={control}
+                            name="Rescue"
+                            render={({ field }) => (
+                                <Textarea
+                                    {...field}
+                                    type="text"
+                                    label="(7) Rescue Call"
                                     maxRows={2}
-                                    placeholder="Escriba una descripción"
+                                    description={descriptions.Rescue}
+                                    variant="bordered"
+                                    placeholder="Escriba los comentarios de la llamada"
                                 />
                             )}
                         />
                         <Select
                             {...register('Windows')}
-                            label="¿Windows no es compatible?"
+                            label="(8) ¿Windows 11 no es compatible?"
                             placeholder="No"
                             variant="bordered"
                             selectedKeys={selectedKeysSelec3}

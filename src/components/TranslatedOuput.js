@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import { useEffect, useState } from 'react';
 import { Card, CardHeader, CardBody, Divider, Snippet } from '@nextui-org/react';
 import axios from 'axios';
@@ -9,26 +9,24 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
     const [isLoading, setIsLoading] = useState(false);
 
     const translateText = async (form_text) => {
-
+        const map_text = form_text.map((text) => text.toLowerCase());
         const options = {
             method: 'POST',
             url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
             headers: {
                 'content-type': 'application/json',
                 'X-RapidAPI-Key': 'f37f789518msh2ee2978fd9b8df3p15344bjsne221ac961de0',
-                'X-RapidAPI-Host': 'deep-translate1.p.rapidapi.com'
+                'X-RapidAPI-Host': 'deep-translate1.p.rapidapi.com',
             },
             data: {
-                q: form_text,
+                q: map_text,
                 source: 'es',
-                target: 'en'
-
-            }
+                target: 'en',
+            },
         };
 
-
         const res = await axios.request(options);
-        const data = res.data.data.translations.translatedText
+        const data = res.data.data.translations.translatedText;
         return data;
     };
 
@@ -41,8 +39,9 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 
         const { Rescue, SWLR, PF, IR, T, S, TSS, Windows } = translate_obj;
 
-        const text = `${Rescue ? '#Rescue ' + Rescue : ''} ${SWLR == 'Yeah' ? '#SWLR' : ''} #PF ${PF} #IR ${IR === 'Yeah' ? 'yes' : 'no'}  #TSS ${TSS} ${Windows ? 'W11REQUEST; WE DO NOT HAVE THE TOOL TO UPDATE THIS UNIT TO W11. SORRY FOR THE INCONVENIENCE, WE HAD TU PUT W10 ON IT ' : ' '
-            } #T ${T} #S ${S}`;
+        const text = `${Rescue ? '#Rescue ' + Rescue : ''} ${SWLR == 'Yeah' ? '#SWLR' : ''} #PF ${PF} #IR ${IR === 'Yeah' ? 'yes' : 'no'}  #TSS ${TSS} ${
+            Windows ? 'W11REQUEST; WE DO NOT HAVE THE TOOL TO UPDATE THIS UNIT TO W11. SORRY FOR THE INCONVENIENCE, WE HAD TU PUT W10 ON IT ' : ' '
+        } #T ${T} #S ${S}`;
 
         setTranslatedText(text);
     };
