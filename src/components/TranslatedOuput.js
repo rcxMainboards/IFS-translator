@@ -39,7 +39,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 
         const { Rescue, SWLR, PF, IR, T, S, TSS, Windows } = translate_obj;
 
-        const text = `${Rescue ? '#Rescue ' + Rescue : ''} ${SWLR == 'Yeah' ? '#SWLR' : ''} #PF ${PF} #IR ${IR === 'Yeah' ? 'yes' : 'no'}  #TSS ${TSS} ${
+        const text = `${Rescue ? '#Rescue ' + Rescue : ''} ${SWLR == 'Yeah' ? '#SWRL' : ''} #PF ${PF} #IR ${IR === 'Yeah' ? 'yes' : 'no'}  #TSS ${TSS} ${
             Windows ? 'W11REQUEST; WE DO NOT HAVE THE TOOL TO UPDATE THIS UNIT TO W11. SORRY FOR THE INCONVENIENCE, WE HAD TU PUT W10 ON IT ' : ' '
         } #T ${T} #S ${S}`;
 
