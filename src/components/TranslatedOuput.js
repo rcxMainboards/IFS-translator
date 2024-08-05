@@ -15,7 +15,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
             url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
             headers: {
                 'content-type': 'application/json',
-                'X-RapidAPI-Key': 'f37f789518msh2ee2978fd9b8df3p15344bjsne221ac961de0',
+                'X-RapidAPI-Key': 'd86a8dfd39mshd6952f130129278p1bbd11jsn01ebde0e5372',
                 'X-RapidAPI-Host': 'deep-translate1.p.rapidapi.com',
             },
             data: {
@@ -39,7 +39,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 
         const { Rescue, SWLR, PF, IR, T, S, TSS, Windows } = translate_obj;
 
-        const text = `${Rescue ? '#Rescue ' + Rescue : ''} ${SWLR == 'Yeah' ? '#SWRL' : ''} #PF ${PF} #IR ${IR === 'Yeah' ? 'yes' : 'no'}  #TSS ${TSS} ${
+        const text = `${Rescue ? `#Rescue ${Rescue}` : ''} ${SWLR === 'Yeah' ? '#SWRL' : ''} #PF ${PF} #IR ${IR === 'Yeah' ? 'yes' : 'no'}  #TSS ${TSS} ${
             Windows ? 'W11REQUEST; WE DO NOT HAVE THE TOOL TO UPDATE THIS UNIT TO W11. SORRY FOR THE INCONVENIENCE, WE HAD TU PUT W10 ON IT ' : ' '
         } #T ${T} #S ${S}`;
 
@@ -57,6 +57,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
         toast.success('Se ha copiado el texto');
     };
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
         if (formData) {
             setIsLoading(true);
