@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 export default function TranslatedOuput({ formData, handleResetForm }) {
     const [translatedText, setTranslatedText] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const translateText = async (form_text) => {
         const map_text = form_text.map((text) => text.toLowerCase());
@@ -15,7 +16,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
             url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
             headers: {
                 'content-type': 'application/json',
-                'X-RapidAPI-Key': 'f37f789518msh2ee2978fd9b8df3p15344bjsne221ac961de0',
+                'X-RapidAPI-Key': '543de0fc67mshfeef3ec90d77504p132556jsn97e9d0d74d06',
                 'X-RapidAPI-Host': 'deep-translate1.p.rapidapi.com',
             },
             data: {
@@ -24,7 +25,6 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
                 target: 'en',
             },
         };
-
         const res = await axios.request(options);
         const data = res.data.data.translations.translatedText;
         return data;
@@ -67,7 +67,11 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
                     formatOutput(translatedText);
                 })
                 .catch((error) => {
-                    console.error(error);
+                    if (error.response.status === 429) {
+                        setError('La llave actual ya no es válida, comuniquese con ingeniería');
+                    } else {
+                        setError(error.toString());
+                    }
                 })
                 .finally(() => {
                     setIsLoading(false);
@@ -84,6 +88,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
             <CardBody className="select-none">
                 <Snippet symbol={false} onCopy={onCopyToClipBoard} className="flex text-sm" size="lg">
                     {!isLoading ? <p className="font-bold text-wrap">{translatedText}</p> : 'Cargando...'}
+                    {error ? <p className="font-bold text-danger-500">{error}</p> : null}
                 </Snippet>
             </CardBody>
         </Card>
