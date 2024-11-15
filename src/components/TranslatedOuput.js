@@ -10,6 +10,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
     const [error, setError] = useState(null);
 
     // test
+    // Algo
     const translateText = async (form_text) => {
         const map_text = form_text.map((text) => text.toLowerCase());
         const options = {
