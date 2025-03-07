@@ -16,8 +16,8 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 	const [error, setError] = useState(null);
 
 	const translateText = async (form_text) => {
-		const map_text = form_text.map((text) => text.toLowerCase());
-		console.log(map_text);
+		const cleanText = (text) => text.replace(/[\r\n]+/g, ' ');
+		const map_text = form_text.map((text) => cleanText(text.toLowerCase()));
 		const options = {
 			method: "POST",
 			url: "https://deep-translate1.p.rapidapi.com/language/translate/v2",
