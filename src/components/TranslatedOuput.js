@@ -28,7 +28,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 			},
 			data: {
 				q: map_text,
-				source: "auto",
+				source: "es",
 				target: "en",
 				format: "text"
 			},
