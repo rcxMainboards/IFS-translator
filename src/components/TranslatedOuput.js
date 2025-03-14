@@ -28,8 +28,8 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 			},
 			data: {
 			  q: map_text,
-			  source: 'en',
-			  target: 'es',
+			  source: 'es',
+			  target: 'en',
 			  format: 'text'
 			}
 		  };
