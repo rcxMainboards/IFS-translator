@@ -20,11 +20,11 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 		const map_text = form_text.map((text) => cleanText(text.toLowerCase()));
 		const options = {
 			method: "POST",
-			url: "https://deep-translate1.p.rapidapi.com/language/translate/v2",
+			url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
 			headers: {
-				"content-type": "application/json",
-				"X-RapidAPI-Key": "e377ac4304mshc59a4e67d53df10p1ef9f6jsn633dc126b303",
-				"X-RapidAPI-Host": "deep-translate1.p.rapidapi.com",
+			  'x-rapidapi-key': 'f37f789518msh2ee2978fd9b8df3p15344bjsne221ac961de0',
+			  'x-rapidapi-host': 'deep-translate1.p.rapidapi.com',
+			  'Content-Type': 'application/json'
 			},
 			data: {
 				q: map_text,
