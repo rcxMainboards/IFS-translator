@@ -22,7 +22,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 			method: 'POST',
 			url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
 			headers: {
-			  'x-rapidapi-key': 'f37f789518msh2ee2978fd9b8df3p15344bjsne221ac961de0',
+			  'x-rapidapi-key': '543de0fc67mshfeef3ec90d77504p132556jsn97e9d0d74d06',
 			  'x-rapidapi-host': 'deep-translate1.p.rapidapi.com',
 			  'Content-Type': 'application/json'
 			},
