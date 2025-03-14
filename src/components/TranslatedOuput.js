@@ -19,7 +19,7 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 		const cleanText = (text) => text.replace(/[\r\n]+/g, ' ');
 		const map_text = form_text.map((text) => cleanText(text.toLowerCase()));
 		const options = {
-			method: "POST",
+			method: 'POST',
 			url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
 			headers: {
 			  'x-rapidapi-key': 'f37f789518msh2ee2978fd9b8df3p15344bjsne221ac961de0',
@@ -27,12 +27,13 @@ export default function TranslatedOuput({ formData, handleResetForm }) {
 			  'Content-Type': 'application/json'
 			},
 			data: {
-				q: map_text,
-				source: "es",
-				target: "en",
-				format: "text"
-			},
-		};
+			  q: map_text,
+			  source: 'en',
+			  target: 'es',
+			  format: 'text'
+			}
+		  };
+		
 		const res = await axios.request(options);
 		const data = res.data.data.translations.translatedText;
 		return data;
