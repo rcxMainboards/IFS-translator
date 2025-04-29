@@ -3,7 +3,6 @@ import {
 	Card,
 	CardHeader,
 	CardBody,
-	Input,
 	Select,
 	SelectItem,
 	Textarea,
@@ -21,9 +20,11 @@ export default function FormIFS({
 	selectedKeysSelec1,
 	selectedKeysSelec2,
 	selectedKeysSelec3,
+	selectedKeysSelec4,
 	setSelectedKeys1,
 	setSelectedKeys2,
 	setSelectedKeys3,
+	setSelectedKeys4,
 }) {
 	return (
 		<Card className="max-w-[44rem] p-6">
@@ -144,22 +145,17 @@ export default function FormIFS({
 								/>
 							)}
 						/>
-						<Controller
-							control={control}
-							name="Rescue"
-							render={({ field }) => (
-								<Textarea
-									{...field}
-									type="text"
-									label="(7) Rescue Call"
-									maxRows={2}
-									description={descriptions.Rescue}
-									variant="bordered"
-									placeholder="Escriba los comentarios de la llamada"
-									autoComplete="off"
-								/>
-							)}
-						/>
+						<Select
+							{...register("Rescue")}
+							label="(7) Rescue Call"
+							description={descriptions.Rescue}
+							variant="bordered"
+							selectedKeys={selectedKeysSelec4}
+							onSelectionChange={(keys) => setSelectedKeys4(keys)}
+							placeholder="No"
+						>
+							<SelectItem key="Si" value="Si">Si</SelectItem>
+						</Select>
 						<Select
 							{...register("Windows")}
 							label="(8) ¿Windows 11 no es compatible?"

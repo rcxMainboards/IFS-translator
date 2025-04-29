@@ -12,6 +12,8 @@ export default function MainContent() {
     const [selectedKeysSelec1, setSelectedKeys1] = useState([]);
     const [selectedKeysSelec2, setSelectedKeys2] = useState([]);
     const [selectedKeysSelec3, setSelectedKeys3] = useState([]);
+    const [selectedKeysSelec4, setSelectedKeys4] = useState([]);
+
 
     const { handleSubmit, control, reset, register } = useForm({
         defaultValues: {
@@ -31,6 +33,7 @@ export default function MainContent() {
         setSelectedKeys1([]);
         setSelectedKeys2([]);
         setSelectedKeys3([]);
+        setSelectedKeys4([]);
     };
 
     const handleFormSubmit = (data) => {
@@ -48,9 +51,11 @@ export default function MainContent() {
                 selectedKeysSelec1={selectedKeysSelec1}
                 selectedKeysSelec2={selectedKeysSelec2}
                 selectedKeysSelec3={selectedKeysSelec3}
+                selectedKeysSelec4={selectedKeysSelec4}
                 setSelectedKeys1={setSelectedKeys1}
                 setSelectedKeys2={setSelectedKeys2}
                 setSelectedKeys3={setSelectedKeys3}
+                setSelectedKeys4={setSelectedKeys4}
             />
             {formData ? (
                 <motion.div
